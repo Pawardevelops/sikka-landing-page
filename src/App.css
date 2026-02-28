@@ -1,0 +1,33 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-wrapper {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Black vignette overlay — fades in from all edges */
+.app-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background:
+    /* Top edge fade */
+    linear-gradient(to bottom, #000000 0%, transparent 18%),
+    /* Bottom edge fade */
+    linear-gradient(to top, #000000 0%, transparent 18%),
+    /* Left edge fade */
+    linear-gradient(to right, #000000 0%, transparent 18%),
+    /* Right edge fade */
+    linear-gradient(to left, #000000 0%, transparent 18%);
+}
