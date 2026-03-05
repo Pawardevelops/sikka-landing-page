@@ -5,6 +5,7 @@ import { TheVault } from '../components/sections/TheVault';
 import { FeatureGrid } from '../components/sections/FeatureGrid';
 import { AnalyticsSection } from '../components/sections/AnalyticsSection';
 import { CTA, Footer } from '../components/sections/CTA';
+import { OpenSourceReveal } from '../components/sections/OpenSourceReveal';
 
 export const HomePage = () => {
     return (
@@ -27,6 +28,10 @@ export const HomePage = () => {
 
             {/* Narrative Arc 6: The Closure */}
             <CTA />
+
+            {/* Narrative Arc 7: The Reveal */}
+            <OpenSourceReveal />
+
             <Footer />
         </main>
     );

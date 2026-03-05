@@ -5,8 +5,8 @@ import { DashboardMockup } from '../mockups/DashboardMockup';
 import { Send } from 'lucide-react';
 
 export const Hero = () => {
-    const handleWaitlistScroll = () => {
-        const element = document.getElementById('waitlist');
+    const handleDownloadScroll = () => {
+        const element = document.getElementById('download');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -93,14 +93,13 @@ export const Hero = () => {
                         transition={{ delay: 0.8, duration: 0.8 }}
                     >
                         <button
-                            className="button button-primary"
-                            style={{ padding: '1rem 2rem', borderRadius: '12px', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}
-                            onClick={handleWaitlistScroll}
+                            className="hero-primary-btn"
+                            onClick={handleDownloadScroll}
                         >
                             {CONTENT.hero.cta}
                             <Send size={18} />
                         </button>
-                        <Button variant="secondary" style={{ padding: '1rem 2rem', borderRadius: '12px', fontSize: '1rem', border: '1px solid rgba(255,255,255,0.15)' }}>
+                        <Button variant="secondary" className="hero-secondary-btn">
                             <span style={{ marginRight: '8px' }}>▶</span>
                             {CONTENT.hero.watchDemoCta}
                         </Button>

@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Menu, X } from 'lucide-react';
 import { CONTENT } from '../../constants/content';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
-    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,20 +23,6 @@ export const Navbar = () => {
         return false;
     };
 
-    const handleBetaClick = () => {
-        if (location.pathname !== '/') {
-            navigate('/#waitlist');
-            // Small delay to allow navigation to complete before scrolling
-            setTimeout(() => {
-                const element = document.getElementById('waitlist');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        } else {
-            const element = document.getElementById('waitlist');
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-        }
-        setIsMobileMenuOpen(false);
-    };
 
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -65,14 +50,6 @@ export const Navbar = () => {
 
                 {/* Actions */}
                 <div className="navbar-actions">
-                    <button
-                        className="button button-primary hide-mobile"
-                        style={{ padding: '0.6rem 1.5rem', fontSize: '0.875rem', borderRadius: '8px' }}
-                        onClick={handleBetaClick}
-                    >
-                        {CONTENT.navbar.cta}
-                    </button>
-
                     {/* Mobile Toggle */}
                     <button
                         className="mobile-toggle"
@@ -104,13 +81,6 @@ export const Navbar = () => {
                                     {link.label}
                                 </Link>
                             ))}
-                            <button
-                                className="button button-primary"
-                                style={{ width: '100%' }}
-                                onClick={handleBetaClick}
-                            >
-                                {CONTENT.navbar.cta}
-                            </button>
                         </div>
                     </motion.div>
                 )}

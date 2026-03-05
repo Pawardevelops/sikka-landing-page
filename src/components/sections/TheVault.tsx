@@ -9,47 +9,35 @@ export const TheVault = () => {
     };
 
     return (
-        <section className="container section-padding" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center' }}>
+        <section className="container section-padding section-center">
             <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-200px" }}
                 style={{ zIndex: 10 }}
             >
-                <motion.div variants={fadeUp} style={{ color: 'var(--accent-mint)', fontWeight: 600, fontSize: '0.875rem', marginBottom: '24px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+                <motion.div variants={fadeUp} className="badge-label">
                     {CONTENT.vault.badge}
                 </motion.div>
 
-                <motion.h2 variants={fadeUp} style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 800, lineHeight: 0.9, marginBottom: '32px', maxWidth: '1000px', margin: '0 auto 32px', textTransform: 'uppercase' }}>
+                <motion.h2 variants={fadeUp} className="vault-title max-w-lg">
                     {CONTENT.vault.title}
                 </motion.h2>
 
-                <motion.p variants={fadeUp} style={{ color: 'var(--text-muted)', fontSize: '1.5rem', maxWidth: '750px', margin: '0 auto 60px', lineHeight: 1.4 }}>
+                <motion.p variants={fadeUp} className="vault-desc max-w-md">
                     {CONTENT.vault.description}
                 </motion.p>
 
                 <motion.div
                     variants={fadeUp}
-                    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '16px', color: 'var(--accent-mint)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                    className="vault-highlight"
                 >
                     <HardDriveUpload size={20} /> {CONTENT.vault.highlight}
                 </motion.div>
             </motion.div>
 
             {/* Abstract Visual Arc */}
-            <motion.div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '120%',
-                    height: '1px',
-                    background: 'linear-gradient(to right, transparent, var(--accent-mint-glow), transparent)',
-                    opacity: 0.3,
-                    zIndex: 0
-                }}
-            />
+            <motion.div className="vault-line" />
         </section>
     );
 };

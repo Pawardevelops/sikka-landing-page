@@ -200,7 +200,7 @@ const RoadmapPage = () => {
                     </div>
 
                     <div className="philosophy-footer">
-                        <p>Updated Oct 24, 2023. Version 0.8.4 Alpha</p>
+                        <p>Updated March 2026. Version 1.0.0 Beta</p>
                     </div>
                 </section>
 

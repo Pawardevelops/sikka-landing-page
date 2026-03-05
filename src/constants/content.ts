@@ -113,12 +113,35 @@ export const CONTENT = {
     },
     cta: {
         title: "Take Back Control.",
-        subtitle: "Join the private beta waitlist.",
-        button: "Join now"
+        subtitle: "Download directly from GitHub. No app store. No tracking.",
+        button: "Download APK",
+        version: "v1.0.0-beta",
+        githubUrl: "https://github.com/Pawardevelops/Sikka/releases",
+        features: [
+            "Direct from GitHub — no middleman",
+            "Every version archived & auditable",
+            "Sideload in seconds, own your install"
+        ]
+    },
+    openSource: {
+        preReveal: "Tap to unveil",
+        title: "It's Open Source.",
+        subtitle: "Sikka's entire codebase is public. Audit it, fork it, own it. Privacy you can verify, not just trust.",
+        githubUrl: "https://github.com/Pawardevelops/Sikka",
+        cta: "View on GitHub",
+        highlights: [
+            { title: "Full Transparency", desc: "Every line of code is public and auditable." },
+            { title: "Community Driven", desc: "Built in the open, shaped by contributors." },
+            { title: "Fork & Self-Host", desc: "Take the code and run it your way." }
+        ]
     },
     footer: {
         copy: "© 2026 Sikka App. All rights reserved.",
-        links: ["Privacy", "Terms", "Twitter"]
+        links: [
+            { label: "Privacy", href: "/privacy" },
+            { label: "Terms", href: "/terms" },
+            { label: "Twitter", href: "https://twitter.com/sikka" }
+        ]
     },
     roadmap: {
         activeBadge: "ACTIVE DEVELOPMENT",
@@ -223,5 +246,49 @@ export const CONTENT = {
             description: "Anyone can suggest a feature and we will take the best ones.",
             cta: "Submit Proposal"
         }
+    },
+    privacy: {
+        title: "Privacy Policy",
+        lastUpdated: "Last Updated: March 1, 2026",
+        sections: [
+            {
+                title: "100% Offline by Design",
+                content: "Sikka is built as a local-first application. Your financial data, transaction history, and account balances are stored exclusively on your device. We do not operate any database servers that store your personal financial information."
+            },
+            {
+                title: "No Data Collection",
+                content: "We do not collect, sell, or trade your personal information. Since your data lives on your device, we literally cannot see it. We do not use third-party trackers or analytics that profile your financial behavior."
+            },
+            {
+                title: "Encrypted Backups",
+                content: "If you choose to use the backup feature, your data is encrypted locally on your device before being uploaded to your own personal Google Drive. We do not have access to your encryption keys or your Google Drive data."
+            },
+            {
+                title: "Manual Control",
+                content: "You have full control over your data. You can delete all locally stored data instantly using the 'Delete All Data' kill-switch within the app settings."
+            }
+        ]
+    },
+    terms: {
+        title: "Terms of Service",
+        lastUpdated: "Last Updated: March 1, 2026",
+        sections: [
+            {
+                title: "Acceptance of Terms",
+                content: "By using Sikka, you agree to these terms. Sikka is provided as-is, with no warranties regarding data accuracy or availability."
+            },
+            {
+                title: "Local Responsibility",
+                content: "As a local-first application, you are solely responsible for the security of your device and the maintenance of your backups. We cannot recover data that is lost due to device failure or forgotten encryption keys."
+            },
+            {
+                title: "Personal Use",
+                content: "Sikka is intended for personal financial tracking. Commercial use or redistribution of the software is prohibited without prior authorization."
+            },
+            {
+                title: "Updates",
+                content: "We may update the software to improve features or security. These updates will be delivered through standard app distribution channels."
+            }
+        ]
     }
 };
