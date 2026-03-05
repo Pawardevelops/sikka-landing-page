@@ -1,21 +1,41 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Lock, Menu, X } from 'lucide-react';
 import { CONTENT } from '../../constants/content';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [visible, setVisible] = useState(true);
+    const { scrollYProgress } = useScroll();
     const location = useLocation();
 
+    useMotionValueEvent(scrollYProgress, "change", (current) => {
+        // Check if current is not undefined and is a number
+        if (typeof current === "number") {
+            let direction = current! - scrollYProgress.getPrevious()!;
+
+            if (scrollYProgress.get() < 0.05) {
+                setVisible(true);
+            } else {
+                if (direction < 0) {
+                    setVisible(true);
+                } else {
+                    setVisible(false);
+                }
+            }
+        }
+    });
+
+    // Prevent body scroll when mobile menu is open
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; }
+    }, [isMobileMenuOpen]);
 
     const isActive = (path: string) => {
         if (path === '/' && location.pathname === '/') return true;
@@ -23,68 +43,71 @@ export const Navbar = () => {
         return false;
     };
 
-
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="navbar-inner container">
+        <AnimatePresence mode="wait">
+            <motion.nav
+                initial={{ opacity: 1, y: -100, x: "-50%" }}
+                animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0, x: "-50%" }}
+                transition={{ duration: 0.2 }}
+                className="floating-navbar"
+            >
                 {/* Logo */}
-                <Link to="/" className="navbar-logo">
-                    <div className="navbar-logo-icon">
-                        <Lock size={18} />
+                <Link to="/" className="floating-nav-logo" onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="floating-nav-logo-icon">
+                        <Lock size={16} className="text-mint" />
                     </div>
                     <span>{CONTENT.navbar.logo}</span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="navbar-links">
+                <div className="floating-nav-links">
                     {CONTENT.navbar.links.map((link) => (
                         <Link
                             key={link.label}
                             to={link.href}
-                            className={`navbar-link ${isActive(link.href) ? 'active' : ''}`}
+                            className={`floating-nav-link ${isActive(link.href) ? 'active' : ''}`}
                         >
                             {link.label}
                         </Link>
                     ))}
                 </div>
 
-                {/* Actions */}
-                <div className="navbar-actions">
-                    {/* Mobile Toggle */}
-                    <button
-                        className="mobile-toggle"
-                        style={{ background: 'none', border: 'none', color: '#FFF' }}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        {isMobileMenuOpen ? <X /> : <Menu />}
-                    </button>
-                </div>
-            </div>
+                {/* Mobile Toggle */}
+                <button
+                    className="mobile-toggle"
+                    style={{ background: 'none', border: 'none', color: '#FFF' }}
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
 
-            {/* Mobile Menu */}
+            </motion.nav>
+
+            {/* Mobile Menu Overlay - Moved OUTSIDE the nav pill so it covers the full screen cleanly */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        className="mobile-menu"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
+                        className="mobile-menu-overlay"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
                     >
-                        <div className="mobile-links" style={{ display: 'flex', flexDirection: 'column', padding: '20px', gap: '16px' }}>
-                            {CONTENT.navbar.links.map((link) => (
-                                <Link
-                                    key={link.label}
-                                    to={link.href}
-                                    className={`navbar-link ${isActive(link.href) ? 'active' : ''}`}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </div>
+                        {/* Mobile links centered on the screen */}
+
+                        {CONTENT.navbar.links.map((link) => (
+                            <Link
+                                key={link.label}
+                                to={link.href}
+                                className={`floating-nav-link ${isActive(link.href) ? 'active' : ''}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </AnimatePresence>
     );
 };

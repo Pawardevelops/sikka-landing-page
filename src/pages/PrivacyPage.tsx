@@ -13,7 +13,7 @@ const PrivacyPage = () => {
         <div className="policy-page">
             <Navbar />
 
-            <main className="container section-padding policy-main">
+            <main className="container section-padding policy-main" style={{ paddingTop: '160px' }}>
                 <motion.button
                     onClick={() => navigate('/')}
                     className="policy-back-btn"

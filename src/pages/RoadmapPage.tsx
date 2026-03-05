@@ -85,7 +85,7 @@ const RoadmapPage = () => {
         <div className="roadmap-page">
             <Navbar />
 
-            <main className="container section-padding roadmap-main">
+            <main className="container section-padding roadmap-main" style={{ paddingTop: '160px' }}>
                 {/* Header Section */}
                 <header className="roadmap-hero">
                     <motion.div
