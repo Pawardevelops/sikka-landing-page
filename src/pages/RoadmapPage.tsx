@@ -10,7 +10,6 @@ import {
     Search,
     Share2,
     ShoppingCart,
-    FileText,
     Lock,
     Code,
     Zap,
@@ -86,7 +85,7 @@ const RoadmapPage = () => {
         <div className="roadmap-page">
             <Navbar />
 
-            <main className="container section-padding" style={{ paddingTop: '140px' }}>
+            <main className="container section-padding roadmap-main">
                 {/* Header Section */}
                 <header className="roadmap-hero">
                     <motion.div
@@ -117,23 +116,39 @@ const RoadmapPage = () => {
                                 {roadmap.subtitle}
                             </motion.p>
                         </div>
-
-                        <motion.button
-                            className="manifesto-btn"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <FileText size={18} />
-                            <span>View Manifesto</span>
-                        </motion.button>
                     </div>
 
-                    <div className="roadmap-tabs">
-                        <button className="tab-item active">Clean Timeline</button>
-                        <button className="tab-item">Grid View</button>
-                        <button className="tab-item">Quarterly Board</button>
-                    </div>
+                    {/* Progress Summary */}
+                    <motion.div
+                        className="roadmap-progress"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        {(() => {
+                            const completed = roadmap.phases.filter(p => p.status === 'Completed').length;
+                            const inProgress = roadmap.phases.filter(p => p.status === 'In Progress').length;
+                            const planned = roadmap.phases.filter(p => p.status === 'Planned').length;
+                            return (
+                                <>
+                                    <div className="progress-stat">
+                                        <span className="progress-count progress-completed">{completed}</span>
+                                        <span className="progress-label">Completed</span>
+                                    </div>
+                                    <div className="progress-divider" />
+                                    <div className="progress-stat">
+                                        <span className="progress-count progress-active">{inProgress}</span>
+                                        <span className="progress-label">In Progress</span>
+                                    </div>
+                                    <div className="progress-divider" />
+                                    <div className="progress-stat">
+                                        <span className="progress-count progress-planned">{planned}</span>
+                                        <span className="progress-label">Planned</span>
+                                    </div>
+                                </>
+                            );
+                        })()}
+                    </motion.div>
                 </header>
 
                 {/* Timeline Section */}
@@ -180,15 +195,23 @@ const RoadmapPage = () => {
 
                 {/* Philosophy Section */}
                 <section className="philosophy-section">
-                    <h2 className="philosophy-title">Development Philosophy</h2>
+                    <motion.h2
+                        className="philosophy-title"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        Development Philosophy
+                    </motion.h2>
                     <div className="philosophy-grid">
-                        {roadmap.philosophy.map((item) => (
+                        {roadmap.philosophy.map((item, index) => (
                             <motion.div
                                 key={item.id}
                                 className="philosophy-card"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
                             >
                                 <div className="phil-icon-box">
                                     {getPhilosophyIcon(item.icon)}
@@ -227,9 +250,8 @@ const RoadmapPage = () => {
                                     <h3>Proposal Received!</h3>
                                     <p>Thanks for contributing to the Sikka roadmap.</p>
                                     <button
-                                        className="btn-text"
+                                        className="suggestion-again-btn"
                                         onClick={() => setSuggestionStatus('idle')}
-                                        style={{ marginTop: '12px', color: 'var(--accent-mint)', cursor: 'pointer', background: 'none', border: 'none' }}
                                     >
                                         Suggest another
                                     </button>
@@ -250,7 +272,7 @@ const RoadmapPage = () => {
                                         disabled={suggestionStatus === 'loading' || !suggestion.trim()}
                                     >
                                         {suggestionStatus === 'loading' ? (
-                                            <Loader2 className="animate-spin" size={18} />
+                                            <Loader2 className="spin-icon" size={18} />
                                         ) : (
                                             <>
                                                 {roadmap.suggestion.cta}

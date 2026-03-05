@@ -1,6 +1,6 @@
 export const CONTENT = {
     navbar: {
-        logo: "SIKKA WEB",
+        logo: "SIKKA",
         links: [
             { label: "Home", href: "/" },
             { label: "Roadmap", href: "/roadmap" }

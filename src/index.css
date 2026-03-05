@@ -2183,6 +2183,92 @@ textarea:focus-visible {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Roadmap Main */
+.roadmap-main {
+  padding-top: 140px;
+}
+
+/* Progress Summary */
+.roadmap-progress {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 32px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.progress-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress-count {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.progress-completed {
+  color: var(--accent-mint);
+}
+
+.progress-active {
+  color: #3B82F6;
+}
+
+.progress-planned {
+  color: var(--text-dim);
+}
+
+.progress-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.progress-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Suggestion Again Button */
+.suggestion-again-btn {
+  margin-top: 12px;
+  color: var(--accent-mint);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.suggestion-again-btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .roadmap-progress {
+    gap: 20px;
+    padding: 16px 20px;
+  }
+
+  .progress-count {
+    font-size: 1.25rem;
+  }
+}
+
 .roadmap-tabs {
   display: flex;
   gap: 32px;

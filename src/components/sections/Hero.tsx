@@ -2,16 +2,8 @@ import { motion } from 'framer-motion';
 import { CONTENT } from '../../constants/content';
 import { Button } from '../shared/Button';
 import { DashboardMockup } from '../mockups/DashboardMockup';
-import { Send } from 'lucide-react';
 
 export const Hero = () => {
-    const handleDownloadScroll = () => {
-        const element = document.getElementById('download');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     const titleVariants = {
         hidden: { opacity: 0, y: 60 },
         visible: (i: number) => ({
@@ -85,20 +77,12 @@ export const Hero = () => {
                         {CONTENT.hero.subtitle}
                     </motion.p>
 
-                    {/* CTAs */}
                     <motion.div
                         className="hero-ctas"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
                     >
-                        <button
-                            className="hero-primary-btn"
-                            onClick={handleDownloadScroll}
-                        >
-                            {CONTENT.hero.cta}
-                            <Send size={18} />
-                        </button>
                         <Button variant="secondary" className="hero-secondary-btn">
                             <span style={{ marginRight: '8px' }}>▶</span>
                             {CONTENT.hero.watchDemoCta}
