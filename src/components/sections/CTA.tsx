@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CONTENT } from '../../constants/content';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import { Download, Github, Check, Tag, ChevronDown, Loader2, Package, Calendar, AlertCircle } from 'lucide-react';
 import { useGitHubReleases, formatSize, formatDate } from '../../hooks/useGitHubReleases';
 import type { GitHubRelease } from '../../hooks/useGitHubReleases';
@@ -121,27 +120,6 @@ export const CTA = () => {
                                 </motion.div>
                             ))}
                         </div>
-
-                        {/* Latest Release Notes */}
-                        {latestRelease?.body && (
-                            <motion.div
-                                className="github-release-notes"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.8 }}
-                            >
-                                <div className="release-notes-header">
-                                    <AlertCircle size={14} />
-                                    <span>Latest Release Notes</span>
-                                </div>
-                                <div className="release-notes-content">
-                                    <ReactMarkdown>
-                                        {latestRelease.body.split('**Full Changelog**')[0].trim()}
-                                    </ReactMarkdown>
-                                </div>
-                            </motion.div>
-                        )}
                     </div>
 
                     {/* All Releases Section */}
