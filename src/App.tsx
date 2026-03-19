@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import RoadmapPage from './pages/RoadmapPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
+import ReleaseNotePage from './pages/ReleaseNotePage';
 
 /**
  * Sikka Hub
@@ -20,6 +21,7 @@ function App() {
         <Route path="/roadmap" element={<RoadmapPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/release-notes/:tag" element={<ReleaseNotePage />} />
       </Routes>
     </Router>
   );

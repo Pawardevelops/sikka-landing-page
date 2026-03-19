@@ -2012,6 +2012,130 @@ textarea:focus-visible {
   }
 }
 
+.github-release-notes {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(0, 230, 118, 0.03);
+  border: 1px solid rgba(0, 230, 118, 0.1);
+  border-radius: 12px;
+  text-align: left;
+  max-width: 100%;
+}
+
+.release-notes-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-mint);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.release-notes-content {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 8px;
+  white-space: pre-wrap;
+}
+
+.release-notes-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.release-notes-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 4px;
+}
+
+.release-notes-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 230, 118, 0.2);
+  border-radius: 4px;
+}
+
+.release-notes-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 230, 118, 0.3);
+}
+
+.release-note-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-mint);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.release-note-link:hover {
+  opacity: 1;
+  border-bottom: 1px solid var(--accent-mint);
+  transform: translateY(-1px);
+}
+
+.release-notes-content h2,
+.release-notes-content h3 {
+  color: var(--text-main);
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+.release-notes-content h1 { font-size: 1.125rem; }
+.release-notes-content h2 { font-size: 1rem; }
+.release-notes-content h3 { font-size: 0.875rem; }
+
+.release-notes-content p {
+  margin-bottom: 12px;
+}
+
+.release-notes-content ul, 
+.release-notes-content ol {
+  padding-left: 20px;
+  margin-bottom: 12px;
+  list-style: disc;
+}
+
+.release-notes-content ol {
+  list-style: decimal;
+}
+
+.release-notes-content li {
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+.release-notes-content code {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.release-notes-content strong {
+  color: var(--accent-mint);
+  font-weight: 700;
+}
+
+.release-notes-content blockquote {
+  border-left: 2px solid var(--accent-mint-glow);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* Policy Pages (Privacy / Terms) */
 .policy-page {
   min-height: 100vh;
