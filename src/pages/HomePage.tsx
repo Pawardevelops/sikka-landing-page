@@ -6,10 +6,19 @@ import { FeatureGrid } from '../components/sections/FeatureGrid';
 import { AnalyticsSection } from '../components/sections/AnalyticsSection';
 import { CTA, Footer } from '../components/sections/CTA';
 import { OpenSourceReveal } from '../components/sections/OpenSourceReveal';
+import { SEOHead } from '../components/shared/SEOHead';
+import { CONTENT } from '../constants/content';
 
 export const HomePage = () => {
     return (
         <main className="app-container">
+            <SEOHead
+                title={CONTENT.seo.home.title}
+                description={CONTENT.seo.home.description}
+                canonicalPath="/"
+                jsonLd={CONTENT.seo.jsonLd}
+            />
+
             {/* Narrative Arc 1: The Context */}
             <Navbar />
             <Hero />

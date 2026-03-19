@@ -215,7 +215,7 @@ const ReleaseRow = ({ release, isLatest }: { release: GitHubRelease; isLatest: b
 
 export const Footer = () => {
     return (
-        <footer className="container footer-section">
+        <footer className="container footer-section" aria-label="Site footer">
             <div className="footer-inner">
                 <p style={{ fontSize: '0.875rem' }}>{CONTENT.footer.copy}</p>
                 <div className="footer-links">

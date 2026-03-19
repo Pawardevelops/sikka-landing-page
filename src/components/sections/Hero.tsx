@@ -36,34 +36,34 @@ export const Hero = () => {
                         {CONTENT.hero.badge}
                     </motion.div>
 
-                    {/* Title */}
+                    {/* Title — Single h1 for SEO, spans for styling */}
                     <div className="hero-title-block">
                         <motion.h1
-                            custom={0}
-                            variants={titleVariants}
+                            className="hero-title-wrapper"
                             initial="hidden"
                             animate="visible"
-                            className="hero-title"
                         >
-                            {CONTENT.hero.titleLine1}
-                        </motion.h1>
-                        <motion.h1
-                            custom={1}
-                            variants={titleVariants}
-                            initial="hidden"
-                            animate="visible"
-                            className="hero-title hero-title-accent"
-                        >
-                            {CONTENT.hero.titleHighlight}
-                        </motion.h1>
-                        <motion.h1
-                            custom={2}
-                            variants={titleVariants}
-                            initial="hidden"
-                            animate="visible"
-                            className="hero-title"
-                        >
-                            {CONTENT.hero.titleLine2}
+                            <motion.span
+                                custom={0}
+                                variants={titleVariants}
+                                className="hero-title hero-title-line"
+                            >
+                                {CONTENT.hero.titleLine1}
+                            </motion.span>
+                            <motion.span
+                                custom={1}
+                                variants={titleVariants}
+                                className="hero-title hero-title-accent hero-title-line"
+                            >
+                                {CONTENT.hero.titleHighlight}
+                            </motion.span>
+                            <motion.span
+                                custom={2}
+                                variants={titleVariants}
+                                className="hero-title hero-title-line"
+                            >
+                                {CONTENT.hero.titleLine2}
+                            </motion.span>
                         </motion.h1>
                     </div>
 
@@ -83,9 +83,9 @@ export const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
                     >
-                        <Button variant="secondary" className="hero-secondary-btn">
+                        <Button variant="secondary" className="hero-secondary-btn" onClick={() => window.scrollTo({ top: document.getElementById('download')?.offsetTop, behavior: 'smooth' })} >
                             <span style={{ marginRight: '8px' }}>▶</span>
-                            {CONTENT.hero.watchDemoCta}
+                            {CONTENT.hero.getApp}
                         </Button>
                     </motion.div>
                 </div>

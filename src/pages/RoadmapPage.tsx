@@ -17,9 +17,10 @@ import {
     Loader2
 } from 'lucide-react';
 import { submitToGoogleSheets } from '../utils/formSubmission';
+import { SEOHead } from '../components/shared/SEOHead';
 
 const RoadmapPage = () => {
-    const { roadmap } = CONTENT;
+    const { roadmap, seo } = CONTENT;
     const [suggestion, setSuggestion] = useState('');
     const [suggestionStatus, setSuggestionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -83,6 +84,11 @@ const RoadmapPage = () => {
 
     return (
         <div className="roadmap-page">
+            <SEOHead
+                title={seo.roadmap.title}
+                description={seo.roadmap.description}
+                canonicalPath="/roadmap"
+            />
             <Navbar />
 
             <main className="container section-padding roadmap-main" style={{ paddingTop: '160px' }}>

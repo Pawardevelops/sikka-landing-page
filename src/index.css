@@ -874,6 +874,20 @@ textarea:focus-visible {
   margin-bottom: 24px;
 }
 
+.hero-title-wrapper {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-title-line {
+  display: block;
+}
+
 .hero-title {
   font-size: clamp(3rem, 6vw, 6rem);
   font-weight: 800;

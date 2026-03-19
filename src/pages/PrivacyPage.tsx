@@ -4,13 +4,19 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/sections/CTA';
 import { Shield, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SEOHead } from '../components/shared/SEOHead';
 
 const PrivacyPage = () => {
-    const { privacy } = CONTENT;
+    const { privacy, seo } = CONTENT;
     const navigate = useNavigate();
 
     return (
         <div className="policy-page">
+            <SEOHead
+                title={seo.privacy.title}
+                description={seo.privacy.description}
+                canonicalPath="/privacy"
+            />
             <Navbar />
 
             <main className="container section-padding policy-main" style={{ paddingTop: '160px' }}>

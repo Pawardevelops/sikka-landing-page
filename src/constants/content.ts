@@ -1,4 +1,45 @@
 export const CONTENT = {
+    seo: {
+        baseUrl: 'https://www.sikka.pawarsachin.dev',
+        home: {
+            title: 'Sikka — Privacy-First Offline Finance Tracker',
+            description: 'Sikka is a 100% offline, open-source personal finance tracker for Android. Track expenses, manage unlimited accounts, and analyze spending with sentiment tags — all without internet. Your data never leaves your device.',
+        },
+        roadmap: {
+            title: 'Product Roadmap — Sikka',
+            description: 'See what\'s next for Sikka. A transparent look at upcoming features for the privacy-first offline finance tracker — from SMS parsing to smart expense search.',
+        },
+        privacy: {
+            title: 'Privacy Policy — Sikka',
+            description: 'Sikka\'s privacy policy. We collect zero data. Your financial information is stored exclusively on your device with local encryption. No servers, no tracking, no exceptions.',
+        },
+        terms: {
+            title: 'Terms of Service — Sikka',
+            description: 'Terms of service for Sikka, the offline-first personal finance tracker. Learn about usage terms, local data responsibility, and update policies.',
+        },
+        jsonLd: {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Sikka",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Android",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": "A 100% offline, open-source personal finance tracker. Track expenses, manage accounts, and analyze spending — your data never leaves your device.",
+            "url": "https://www.sikka.pawarsachin.dev",
+            "downloadUrl": "https://github.com/Pawardevelops/Sikka/releases",
+            "softwareVersion": "1.0.0-beta",
+            "author": {
+                "@type": "Organization",
+                "name": "Sikka",
+                "url": "https://www.sikka.pawarsachin.dev"
+            },
+            "license": "https://github.com/Pawardevelops/Sikka/blob/main/LICENSE"
+        }
+    },
     navbar: {
         logo: "SIKKA",
         links: [
@@ -14,7 +55,7 @@ export const CONTENT = {
         titleLine2: "100% Offline.",
         subtitle: "Meet Sikka. The strictly offline personal finance tracker. We are currently inviting users to our private beta. Join the waitlist for early access.",
         cta: "Be a part of Beta Testing",
-        watchDemoCta: "Watch Demo",
+        getApp: "Get the App",
         stats: [
             { icon: "🔐", value: "100%", label: "ENCRYPTED" },
             { icon: "📡", value: "Offline", label: "FIRST ARCHITECTURE" },
@@ -140,7 +181,6 @@ export const CONTENT = {
         links: [
             { label: "Privacy", href: "/privacy" },
             { label: "Terms", href: "/terms" },
-            { label: "Twitter", href: "https://twitter.com/sikka" }
         ]
     },
     roadmap: {

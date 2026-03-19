@@ -4,13 +4,19 @@ import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/sections/CTA';
 import { FileText, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { SEOHead } from '../components/shared/SEOHead';
 
 const TermsPage = () => {
-    const { terms } = CONTENT;
+    const { terms, seo } = CONTENT;
     const navigate = useNavigate();
 
     return (
         <div className="policy-page">
+            <SEOHead
+                title={seo.terms.title}
+                description={seo.terms.description}
+                canonicalPath="/terms"
+            />
             <Navbar />
 
             <main className="container section-padding policy-main" style={{ paddingTop: '160px' }}>
